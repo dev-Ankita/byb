@@ -1,0 +1,167 @@
+.jobTiles
+{
+    border-radius:10px;
+    background: linear-gradient(90deg, #26AEC4 -35.28%, #25A7BD -11.09%, #2293AB 17.78%, #1D728D 49.77%, #174564 82.54%, #163F5E 114.53%);
+    width: 280px;
+    height: fit-content;
+    top: -5px;
+    border: none !important;
+}
+.card-icons{
+    color:white;
+}
+.nav-link {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bolder;
+    font-size: 20px;
+    line-height: 24px;
+  
+    color: #26A9BE !important;
+  }
+  
+  .navbar-nav .active>.nav-link {
+    color: #000000 !important;
+  }
+  .label1 {
+    display: inline-block;
+    width: 80px;
+  }
+  .nav-link {
+    padding-right: 2.5rem !important;
+  }
+  .label {
+    font-size: 11px;
+    display: inline-block;
+    // width: 150px;
+    text-align: right;
+    margin-bottom: -25px;
+    font-size: 10px;
+  }
+.input-text{
+    border: none;
+    outline: none;
+  }
+  .dropdown-menu{
+    margin-left: -74%;
+  }
+  .form{
+    height: 226px;
+    /* align-items: center; */
+    padding-right: 35px;
+    padding-left: 35px;
+    height: -10%;
+    /* width: 101%; */
+    width: 310px;
+  }
+  .input-cardform{
+    margin-top: -26px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+  }
+.label{
+position: absolute;
+width: 57px;
+height: 24px;
+left: 370px;
+top: 217px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+
+color: #65E151;
+
+}
+
+
+    .line1{
+        width: 90%;
+        border-bottom: 2px solid black;
+        position: relative;
+        left: 4%;
+        margin-top: 5px
+        }
+    
+ .card-edit
+ {
+    position: absolute;
+                    will-change: transform;
+                    right: 205px;
+                    top: -13px;
+                    left: 28px;
+                    transform: translate3d(206px, 44px, 0px);
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+ }
+
+ .line2{
+    width: 93%;
+    height: 48px;
+    border-bottom: 2px solid white;
+    position: absolute;
+    margin-top: -6%;
+    left: 2%;
+
+ }
+ .errorMessage{
+  position: relative;
+ }
+ 
+.stageLabel
+{
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24.38px;  
+}
+.open
+{
+  color: #65E151;
+}
+.hold
+{
+  color: #E2B618;
+}
+.closed
+{
+  color: red;
+}
+.divider
+{
+  width:100%;
+  border-bottom: 1px solid #000000;
+}
+.divider1
+{
+  width:100%;
+  border-bottom: 1px solid #ffffff;
+}
+.jobTiles
+{
+  .card-body
+  {
+    padding: 2%; color: #ffffff;
+  }
+  .card-header
+  {
+    padding: 2% 3% 0 0 !important;
+    border-bottom: 0 !important;
+    text-align: end !important;
+  }
+}
+
+.form-check-input {
+  position: relative !important;
+  margin-top: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0.3em !important;
+}
+
+.col-form-label-sm {
+  font-size: .75rem !important;
+}

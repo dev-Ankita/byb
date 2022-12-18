@@ -1,0 +1,76 @@
+.multiselect-dropdown .dropdown-btn,
+.custom-file-label {
+
+  display: flex;
+  width: 100%;
+  height: 34px;
+  border-width: 0px 0 2px 0;
+  border-color: white white black;
+  padding: 1% 0;
+  line-height: 39px;
+  font-weight: 200;
+  outline: none;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  color: #000000 !important;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  font-weight: 400;
+}
+
+.custom-file-label::after {
+  border-radius: 0 !important;
+}
+
+.card {
+  box-shadow: 0 10px 15px 0 rgb(0 0 0 / 30%);
+  width: 90%;
+  border-radius: 10px;
+  background-color: #ffffff;
+  z-index: 10;
+  height: fit-content;
+  margin: auto;
+}
+
+.searchbox-wrap {
+  button {
+    padding-left: 10px;
+    border: none;
+    cursor: pointer;
+    cursor: hand;
+
+  }
+}
+label {
+  font-size: 15px;
+  color: #0094ac;
+  font-weight: 700;
+  margin: 1.5% 0 0 0 !important;
+}
+
+.custom-file-label::after {
+  color: #ffffff;
+  background-color: #26a9be;
+}
+
+#preferredWorkType {
+  display: flex;
+  height: 34px;
+  padding: 10px 10px 10px 0;
+  border-width: 0px 0 2px 0;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  font-weight: 400;
+  outline: none;
+}
+
+.image-fluid {
+  width: 55% !important;
+}
+
+.form-check-label {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}

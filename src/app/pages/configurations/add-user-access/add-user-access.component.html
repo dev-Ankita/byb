@@ -1,0 +1,142 @@
+<p>add-user-access works!</p>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="card" style="height:min-content">
+            <div class="card-header">
+                <label style="color:#26A9BE;font-size:20px;font-weight:500;">Give Access</label>
+
+            </div>
+            <div class="card-body">
+                <form [formGroup]="addUserAccessForm" (ngSubmit)="addCandidateAccess(addUserAccessForm)">
+                    <div class="form-row d-flex align-items-end">
+                        <div class="form-group col-lg-6">
+                            <label for="test1">Enter First Name</label>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="firstName">
+                                <div class="errorMessage">
+                                    <p *ngIf="addUserAccessForm.get('firstName')?.errors?.['required'] ">* Field is required
+                                    </p>
+                                   
+                                </div>
+
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label for="contact_tel" style="margin: 0">Enter Email Id </label>
+
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="emailId">
+                                <div class="errorMessage">
+                                    <p *ngIf="addUserAccessForm.get('emailId')?.errors?.['required'] ">* Field is required
+                                    </p>
+                                    <p *ngIf="addUserAccessForm.get('emailId')?.errors?.['pattern'] ">
+                                        * please enter your email </p>
+                                </div>
+                        </div>
+
+                    </div>
+                    <div class="form-row d-flex align-items-end">
+                        <div class="form-group col-lg-6">
+                            <label for="Designation">Enter Designation</label>
+                            <input type="text" class="form-control " aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="designation">
+                                <div class="errorMessage">
+                                    <p *ngIf="addUserAccessForm.get('designation')?.errors?.['required'] ">* Field is required
+                                    </p>
+                                </div>
+
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label for="access" style="margin: 0">Access </label>
+                            <div class="form-check form-check-inline" id="access" style="display: flex;">
+                                <div class="form-check">
+                                    <input  type="checkbox"
+                                     name="access" 
+                                        value="1" style="color:#26A9BE"  [value]="1" (change)="onCheckboxChange($event)">
+                                    <label class="form-check-label" for="accessViewAndDownload">
+                                        can view & download
+                                    </label>
+                                </div>
+                                <div class="form-check" style="padding-left: 1.5rem;">
+                                    <input  type="checkbox"
+                                     name="access" 
+                                        style="color:#26A9BE ;" [value]="2" (change)="onCheckboxChange($event)">
+                                    <label class="form-check-label" for="accessEdit">
+                                        can edit
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="errorMessage">
+                                <p *ngIf="this.addUserAccessForm.controls['checkArray'].errors?.['required']">* Field is required
+                                </p>
+                            </div>
+                           
+
+                        </div>
+
+                    </div>
+                    <div style="margin-top: 1rem;
+                    margin-bottom: 1rem; justify-content: center;">
+                        <button type="submit" class="btn btn-sm btn-light" [disabled]="addUserAccessForm.invalid"
+                            style="margin-right:3% ; height: 30px; width: 100px; background-color: #26A9BE;">Add</button>
+                        <button type="submit" style="height: 30px; width: 100px;"
+                            class="btn btn-sm  btn-outline-secondary" (click)="resetForm()">cancel</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+
+<div class="container-fluid mt-4" style=" justify-content: center;">
+    <div class="card" style="height:min-content; width:85%; ">
+        <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm"
+            style="overflow: auto ;">
+            <table class="table text-center table-border">
+
+                <thead>
+                    <th>
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        EmailId
+                    </th>
+                    <th>
+                        Designation
+                    </th>
+                    <th>
+                        Access
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+
+                        <td>
+                            <i class="bi bi-x" style="font-size:25px ;" ></i>
+                        </td>
+                        <td>Ankita pattanaik</td>
+                        <td>ankita@cozentus.in</td>
+                        <td>developer</td>
+                        <td>can view and download <i class="bi bi-caret-down-fill"></i></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>

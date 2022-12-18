@@ -1,0 +1,156 @@
+<div class="container-fluid">
+    <div class="row" style="height: 100vh;">
+        <div class="col d-none d-lg-block" style="align-self: center;">
+            <div class="circle1"></div>
+            <div class="row">
+                <img class="image-fluid mx-auto d-block" src="../../../assets/images/we are hiring.svg">
+            </div>
+            <div class="row">
+                <img class="image-fluid mx-auto d-block" src="../../../assets/images/89120-hiring-3.gif">
+            </div>
+        </div>
+        <div class="col">
+            <div class="circle d-none d-lg-block"></div>
+            <div class="row">
+                <img src="../../../assets/images/Cozentus logo(blue).svg" style="margin: 3% auto;">
+            </div>
+            <div class="row" style="height:80% ;">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="register-form" id="register-form" [formGroup]="candidateForm"
+                            (ngSubmit)="addCandidateInformation(candidateForm)">
+                            <div class="form-row d-flex align-items-end">
+                                <div class="form-group col-lg-6">
+                                    <label for="test1">Candidate Name</label>
+                                    <input type="text" formControlName="candidateName" class="input-text "
+                                        placeholder="">
+                                    <div class="errorMessage">
+
+                                        <p *ngIf="candidateForm.get('candidateName')?.errors?.['required'] ">* Field is
+                                            required</p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <label for="contact_tel" style="margin: 0">Experience </label>
+
+                                    <input id="yearsofEmployment" type="number" id="yearsofEmployment"
+                                        formControlName="yearsofEmployment" type="text" class="input-text" />
+                                    <div class="errorMessage">
+                                        <p *ngIf="candidateForm.get('yearsofEmployment')?.errors?.['required'] ">* Field
+                                            is required</p>
+                                        <p *ngIf="candidateForm.get('yearsofEmployment')?.errors?.['pattern'] ">* Only
+                                            Numbers</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row d-flex align-items-start">
+                                <div class="form-group col-lg-6">
+                                    <label for="test2">Applied For</label>
+                                    <input type="text" id="appliedFor" formControlName="appliedFor" class="input-text "
+                                        list="jobtypes" autocomplete="off" />
+                                    <datalist id="jobtypes">
+                                        <option style="background-color: #036" *ngFor="let jobType of jobTypes"
+                                            [value]="jobType?.jobName"></option>
+                                    </datalist>
+                                    <div class="errorMessage">
+                                        <p *ngIf="candidateForm.get('appliedFor')?.errors?.['required'] ">* Field is
+                                            required</p>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="test3">Preferred Work Location</label>
+                                    <input type="text" formControlName="preferredWorkLocation" class="input-text"
+                                        placeholder="" />
+                                    <div class="errorMessage">
+                                        <p *ngIf="candidateForm.get('preferredWorkLocation')?.errors?.['required'] ">
+                                            * Field
+                                            is
+                                            required</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="form-row d-flex align-items-start">
+                                <div class="form-group col-lg-6">
+                                    <label for="test2">Skills</label>
+                                    <ng-multiselect-dropdown class="input-text" [placeholder]="'--Select Skills--'"
+                                        [settings]="dropdownSettings" [data]="dropdownList"                                        
+                                        id="skills" formControlName="skills">
+                                    </ng-multiselect-dropdown>
+                                    <div class="errorMessage">
+                                        <p *ngIf="candidateForm.get('skills')?.errors?.['required'] ">* Field is
+                                            required</p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="test3">Referred By</label>
+                                    <input type="text" id="employeeList" formControlName="referredBy" autocomplete="off"
+                                        class="input-text" placeholder="" />
+                                    <div class="errorMessage">
+                                        <p *ngIf="candidateForm.get('referredBy')?.errors?.['required'] ">* Field is
+                                            required</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-row d-flex align-items-start">
+                                <div class="form-group col-lg-6">
+                                    <label for="preferredWorkType">Preferred Work Type</label>
+                                    <div class="form-radio-group" id="preferredWorkType" style="display: flex;">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio"
+                                                formControlName="preferredWorkType" name="preferredWorkType" id="wfo"
+                                                value="WFO">
+                                            <label class="form-check-label" for="wfo">
+                                                WFO
+                                            </label>
+                                        </div>
+                                        <div class="form-check" style="padding-left: 3.5rem">
+                                            <input class="form-check-input" type="radio"
+                                                formControlName="preferredWorkType" name="preferredWorkType" id="wfh"
+                                                value="WFH">
+                                            <label class="form-check-label" for="wfh">
+                                                WFH
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="errorMessage">
+                                        <p *ngIf="candidateForm.get('preferredWorkType')?.errors?.['required'] ">* Field is required.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="fileUpload">Choose Resume</label>
+                                    <div class="custom-file" id="fileUpload">
+                                        <input type="file" formControlName="formFile"
+                                            accept="application/pdf,.doc, .docx, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                            class="custom-file-input" id="resumeFileUpload"
+                                            (change)="FileUpload($event)">
+                                        <label class="custom-file-label"
+                                            for="resumeFileUpload">{{candidateForm.controls['formFile'].value}}</label>
+                                    </div>
+                                    <div class="errorMessage">
+                                        <p *ngIf="candidateForm.get('formFile')?.errors?.['required'] ">* Field is required</p>
+                                        <p *ngIf="candidateForm.get('formFile')?.errors?.['InvalidExtension'] ">* Invalid File</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1rem;
+                        margin-bottom: 1rem; justify-content: center;display: flex;">
+                            <button type="submit" [disabled]="candidateForm.invalid" class="btn btn-sm btn-primary"
+                                style="margin-right:5% ; height: 38px; width: 118px;">Submit</button>
+                            <button type="submit" (click)="resetForm()" style="height: 38px; width: 118px;"
+                                class="btn btn-sm btn-dark">Reset</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

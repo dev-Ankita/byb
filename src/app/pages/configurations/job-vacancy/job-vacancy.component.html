@@ -1,0 +1,301 @@
+<div class="row mb-5">
+    <div class="col">
+        <div class="skill">
+            <button type="button" class="btn btn-primary dropdown-toggle" style="background-color:#26A9BE" data-toggle="modal" data-target="#addjobmodal" (click)="resetForm()"> 
+                <i class="bi bi-plus"></i>Add Job Vacancy 
+            </button>
+            <div class="modal fade" id="addjobmodal" tabindex="-1" role="dialog" aria-labelledby="addjobmodalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Job Position</h5>
+                            <button type="button" (click)="resetForm()" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="bi bi-x-square"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <form  [formGroup]="addJobPositionForm" (ngSubmit)="addNewJobVacancy()">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="col-form-label col-form-label-sm">Job Description</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" formControlName="jobDescription" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                            <div class="errorMessage">                                                  
+                                                <p *ngIf="addJobPositionForm.get('jobDescription')?.errors?.['required'] " >* Field is required</p>   
+                                              </div>
+                                        </div>
+                                       
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label class=" col-form-label col-form-label-sm">Experience Required</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input type="text" class="form-control" formControlName="experiencemin" aria-label="Small" placeholder="Min" aria-describedby="inputGroup-sizing-sm">
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" formControlName="experiencemax" aria-label="Small" placeholder="Max" aria-describedby="inputGroup-sizing-sm">
+                                                </div>
+                                                <div class="errorMessage">                                                  
+                                                   <p  *ngIf="addJobPositionForm.get('experience')?.hasError('experience')">* Experience should not be more than 35 years</p>
+                                                   <p *ngIf="addJobPositionForm.get('experience')?.errors?.['pattern'] ">* Only Numbers</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class=" col-form-label col-form-label-sm">No of Vacant Positions :</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" formControlName="vacantPositions" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                            <div class="errorMessage">
+                                                <p *ngIf="addJobPositionForm.get('vacantPositions')?.errors?.['required'] " >* Field is required</p> 
+                                                <p *ngIf="addJobPositionForm.get('vacantPositions')?.errors?.['pattern'] " >* Only numbers</p>
+                                              </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label class="col-form-label col-form-label-sm">Date</label>
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input type="text" class="form-control" formControlName="openingdate" aria-label="Small" [bsValue]="this.addJobPositionForm.get('openingdate')?.value"  bsDatepicker [bsConfig]="{ adaptivePosition: true }" placeholder="Open Date" aria-describedby="inputGroup-sizing-sm">                                                       
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control" formControlName="closingdate" aria-label="Small" [bsValue]="this.addJobPositionForm.get('closingdate')?.value"  bsDatepicker [bsConfig]="{ adaptivePosition: true }" placeholder="Close Date" aria-describedby="inputGroup-sizing-sm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3" *ngIf="addJobPositionForm.get('jobId')?.value > 0">
+                                        <div class="col">
+                                            <label class="col-form-label col-form-label-sm">Status</label>                                            
+                                        </div>
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col" *ngIf="isOpen">
+                                                    <input class="form-check-input" type="radio" formControlName="status" name="status" id="open" value="1">
+                                                    <label class="form-check-label" for="open">Open</label>
+                                                </div>
+                                                <div class="col" *ngIf="isClosed">
+                                                    <input class="form-check-input" type="radio" formControlName="status" name="status" id="close" value="2"  >
+                                                    <label class="form-check-label" for="close">Closed</label>
+                                                </div>
+                                                <div class="col" *ngIf="isHold">
+                                                    <input class="form-check-input" type="radio" formControlName="status" name="status" id="hold" value="3">
+                                                    <label class="form-check-label" for="hold">Hold</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <button class="btn btn-info btn-sm mx-auto" type="submit" data-toggle="modal" data-target="#addjobmodal">
+                                            <span *ngIf="addJobPositionForm.get('jobId')?.value > 0">Update</span>
+                                            <span *ngIf="addJobPositionForm.get('jobId')?.value == 0 || addJobPositionForm.get('jobId')?.value == undefined">Add</span>
+                                        </button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="col pl-xl-5">
+        <div class="input-group mx-auto" style="margin: auto; margin-right: 0;">
+            <div class="input-group-prepend">
+                <span class="input-group-text"
+                    style="border-radius: 1rem 0 0 1rem; background-color: transparent; border: 1px solid #26A9BE;border-right: 0;"
+                    id="inputGroup-sizing-default"><i style="color:#26A9BE" class="bi bi-search"></i></span>
+            </div>
+            <input type="text" class="form-control searchTxtbx" aria-label="Default"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="openJobVacancies.length > 0">
+    <div class="row">
+        <label class="stageLabel open">Open</label>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mr-2" *ngFor="let jobVacancy of openJobVacancies" style="margin: 0; padding:0;">
+            <div class="card jobTiles">
+                <div class="card-header">
+                    <div class="card-icons">
+                        <i class="bi bi-pencil pr-2" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false"  data-toggle="modal" data-target="#addjobmodal" (click)="editJobVacancy(jobVacancy)"></i>
+                        <i class="bi bi-trash" role="button" (click)="deleteJobVacancy(jobVacancy?.jobId)"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-5 px-0">
+                            <label class=" col-form-label col-form-label-sm">Designation</label>
+                        </div>
+                        <div class="col-7 px-0">
+                            <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.jobDescription}}</label>
+                        </div>
+                        <div class="divider1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 px-0">
+                            <label class=" col-form-label col-form-label-sm">Experience</label>
+                        </div>
+                        <div class="col-7 px-0">
+                            <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.minExp}} - {{jobVacancy?.maxExp}} Years</label>
+                        </div>
+                        <div class="divider1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 px-0">
+                            <label class=" col-form-label col-form-label-sm">Vacant Positions</label>
+                        </div>
+                        <div class="col-7 px-0">
+                            <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.noOfPositions}}</label>
+                        </div>
+                        <div class="divider1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 px-0">
+                            <label class=" col-form-label col-form-label-sm">Date</label>
+                        </div>
+                        <div class="col-7 px-0">
+                            <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.openingDate | date:'dd MMM yyyy'}} - {{jobVacancy?.closingDate  | date:'dd MMM yyyy'}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider my-3"></div>
+</div>
+
+<div *ngIf="holdJobVacancies.length > 0">
+    <div class="row">
+        <label class="stageLabel hold">On Hold</label>
+    </div>
+    <div class="row">
+        <div class="card jobTiles m-0 mr-3" *ngFor="let jobVacancy of holdJobVacancies">
+            <div class="card-header">
+                <div class="card-icons">
+                    <i class="bi bi-pencil pr-2" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false"  data-toggle="modal" data-target="#addjobmodal" (click)="editJobVacancy(jobVacancy)"></i>
+                    <i class="bi bi-trash" role="button" (click)="deleteJobVacancy(jobVacancy?.jobId)"></i>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Designation</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.jobDescription}}</label>
+                    </div>
+                    <div class="line2"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Experience</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.minExp}} - {{jobVacancy?.maxExp}} Years</label>
+                    </div>
+                    <div class="line2"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Vacant Positions</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.noOfPositions}}</label>
+                    </div>
+                    <div class="line2"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Date</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.openingDate | date:'dd MMM yyyy'}}- {{jobVacancy?.closingDate | date:'dd MMM yyyy'}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="divider my-3"></div>
+</div>
+
+<div *ngIf="closedJobVacancies.length > 0">
+    <div class="row">
+        <label class="stageLabel closed">Closed</label>
+    </div>
+    <div class="row">
+        <div class="card jobTiles m-0 mr-3" *ngFor="let jobVacancy of closedJobVacancies">
+            <div class="card-header">
+                <!-- <div class="card-icons">
+                    <i class="bi bi-pencil pr-2" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false"  data-toggle="modal" data-target="#addjobmodal" (click)="editJobVacancy(jobVacancy)"></i>
+                    <i class="bi bi-trash" role="button" (click)="deleteJobVacancy(jobVacancy?.jobId)"></i>
+                </div> -->
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Designation</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.jobDescription}}</label>
+                    </div>
+                    <div class="line2"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Experience</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.minExp}} - {{jobVacancy?.maxExp}} Years</label>
+                    </div>
+                    <div class="line2"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Vacant Positions</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.noOfPositions}}</label>
+                    </div>
+                    <div class="line2"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">Date</label>
+                    </div>
+                    <div class="col">
+                        <label class=" col-form-label col-form-label-sm">: {{jobVacancy?.openingDate | date:'dd MMM yyyy'}} - {{jobVacancy?.closingDate | date:'dd MMM yyyy'}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="circle circle-top-left"></div>
+<div class="container-fluid">
+    <div class="row" style="height:100vh">
+        <div class="col" style="align-self: center;">
+            <div class="row" style="padding: 7% 0 ;">
+                <img class="img-fluid mx-auto" style="height:34px" src="../../../assets/images/Cozentus logo(blue).svg">
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-2"></div>
+                <div class="col-xl-6 col-lg-6 col-md-8">
+                    <div class="card mx-auto w-100">
+                        <div class="card-body">
+                            <form [formGroup]="logInForm" (submit)="loginUser(logInForm)">
+                                <div class="form-group row">
+                                    <div class="row w-100">
+                                        <label for="emailId" class="col-form-label">Email</label>
+                                        <input type="email " id="emailId" class="form-control" type="text"
+                                            formControlName="email" style="border-radius: 0;" />
+                                    </div>
+                                    <div class="row errorMessage w-100">
+                                        <p *ngIf="logInForm.get('email')?.errors?.['required'] ">* Required</p>
+                                        <p *ngIf="logInForm.get('email')?.errors?.['pattern']">* Please Provide Correct
+                                            Email Id</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="row w-100">
+                                        <label for="password" class="col-form-label">Password</label>
+                                        <!--  -->
+                                        <div class="input-group input-group-sm">                                            
+                                            <input [type]="isVisiblePassword?'text':'password'" (keydown.space)="$event.preventDefault();" formControlName="password" id="password" class="form-control" style="border-radius: 0;" />
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon1" (click)="toggleIsVisiblePassword()" style="cursor:pointer ;">
+                                                    <i *ngIf="!isVisiblePassword" class="bi bi-eye-slash-fill"></i>
+                                                    <i *ngIf="isVisiblePassword" class="bi bi-eye-fill"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row errorMessage w-100">
+                                        <p *ngIf="logInForm.get('password')?.errors?.['required'] ">* Required</p>
+                                        <p *ngIf="logInForm.get('password')?.errors?.['pattern']">
+                                            * Password must be between 8 to 15 characters, at least 1 uppercase letter,
+                                            1 lowercase letter, 1 number and 1 special character.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row my-4">
+                                    <button class="btn btn-info btn-sm mx-auto" type="submit" style="min-width:25% !important ;" [disabled]="logInForm.invalid">Log In</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-2"></div>
+            </div>
+            <div class="row">
+                <img class="img-fluid mx-auto jobSearchingLogo" style="width:35%" src="../../../assets/images/3d9f87ca0cd10421f46d6db4ecec996e.gif">
+            </div>
+        </div>
+        <div class="col d-none d-md-block banner-block">
+            <div class="container">
+                <div class="tinycircle">
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>

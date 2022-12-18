@@ -1,0 +1,577 @@
+<div class="row">
+    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+
+        <div class="bottomcircle"></div>
+        <div class="row mt-3">
+            <img class="img-fluid mx-auto" src="../../../assets/images/Cozentus logo(blue).svg">
+        </div>
+        <div class="row d-none d-lg-block d-xl-block" style="text-align:center; margin-top: 25%;">
+            <img class="image-fluid mx-auto" style="width:70% ;" src="../../../assets/images/we are hiring.svg">
+        </div>
+        <div class="row  d-none d-lg-block d-xl-block" style="text-align:center ;">
+            <img class="image-fluid mx-auto" style="width:69% ;" src="../../../assets/images/89120-hiring-3.gif">
+        </div>
+    </div>
+
+    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 ">
+        <!-- <div class="card w-50 mt-5">
+            <div class="card-body">
+              <p class="card-text">Registration will start from December 1, 2022 9AM IST till December 6, 2022 7PM IST.</p>
+            </div>
+          </div> -->
+        <form *ngIf="(!isalreadyregistered)" [formGroup]="candidatePersonalForm" (ngSubmit)="addCandidateInformation(candidatePersonalForm)">
+            
+            <label class="labels">Personal Details</label>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Name :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" formControlName="name">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('name')?.errors?.['required'] ">* Required</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Contact no :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="contactNo" aria-label="Small" maxlength="10"
+                                aria-describedby="inputGroup-sizing-sm">
+
+                            <div class="errorMessage ">
+                                <p *ngIf="candidatePersonalForm.get('contactNo')?.errors?.['required'] ">* Required</p>
+                                <p *ngIf="candidatePersonalForm.get('contactNo')?.errors?.['pattern'] "> * Number Only </p>
+                                <p *ngIf="candidatePersonalForm.get('contactNo')?.errors?.['maxlength'] || candidatePersonalForm.get('contactNo')?.errors?.['minlength'] ">
+                                    * Phone number must contain 10 digits.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Email Id  :
+                            </label>
+                            
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="emailId" aria-label="Small" readonly
+                                aria-describedby="inputGroup-sizing-sm" [attr.disabled]="true">
+                            <div class="errorMessage">
+                                
+                                <p *ngIf="candidatePersonalForm.get('emailId')?.errors?.['required'] ">* Required </p>
+                                <p *ngIf="candidatePersonalForm.get('emailId')?.errors?.['pattern'] "> * EmailId is not valid !</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Current Location :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="currentLocation" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('currentLocation')?.errors?.['required'] ">* Required</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right">
+                    <div class="row">
+                        <div class="input-group"
+                        style="width: fit-content; margin: auto; position: absolute; left: 135px;">
+                        <div class="custom-file">
+                            <input #imageFile type="file" class="custom-file-input" accept="image/*" id="inputGroupFile01"
+                                onclick="this.value=null" (change)="imageUpload($event)" aria-describedby="inputGroupFileAddon01" style="
+                            width:0">
+                            <label class="custom-file-label" for="inputGroupFile01" style="width:0;">Choose
+                                file</label>
+                            <div class="input-group-append">
+                                <button (click)="imageFile.click()" class="btn btn-info" type="button"
+                                    id="inputGroupFileAddon04"
+                                    style="border-radius: 50%; height: 30px; width: 30px; padding: 0;">
+                                    <i class="bi bi-upload"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <img class="img-fluid rounded-circle" [src]="candidatePersonalForm.get('profileImage')?.value"
+                        style="height:160px;width:160px;border: 1px solid #000;margin-left: 11px;"
+                        onerror="this.src='../../../assets/images/user_default_logo.svg'">
+                    </div>
+                    <div class="row">
+                        <label class=" col-form-label col-form-label-sm">
+                            Choose your Profile Image</label>                        
+                    </div>
+                    <div class="row">
+                        <div class="errorMessage">
+                            <p *ngIf="candidatePersonalForm.get('profileImage')?.errors?.['required'] ">* Required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label class="labels" style="margin:0 !important ;">Address</label>
+            <h6 class="mt-2" style="font-weight: 600;color: #000000;">Present Address</h6>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Address :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="presAddress1">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('presAddress1')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('presAddress1')?.errors?.['maxlength'] ">* 200 characters Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">LandMark :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="presAddress2" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('presAddress2')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('presAddress2')?.errors?.['maxlength'] ">* 200 characters Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">City / Area :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="presCity" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('presCity')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('presCity')?.errors?.['maxlength'] ">* 50 characters Only.</p>    
+                                </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">PIN :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="presPIN" aria-label="Small" maxlength="6"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('presPIN')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('presPIN')?.errors?.['pattern'] ">* Number Only.</p>    
+                                    <p *ngIf="candidatePersonalForm.get('presPIN')?.errors?.['maxlength'] ">* 6 digits Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">District :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="presDistrict" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('presDistrict')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('presDistrict')?.errors?.['maxlength'] ">* 50 characters Only.</p>    
+                                </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">State :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="presAState" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('presAState')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('presAState')?.errors?.['maxlength'] ">* 50 characters Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <h6 style="font-weight: 600;color: #000000;">Permanent Address</h6>
+            <input type="checkbox" (change)="sameAddress($event)" aria-label="Checkbox for following text input" id="chkSameAddress">
+            <label style="margin:0 !important ;">Is same as present address ?</label>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Address :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="permAddress1">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('permAddress1')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('permAddress1')?.errors?.['maxlength'] ">* 200 characters Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Landmark :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="permAddress2" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('permAddress2')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('permAddress2')?.errors?.['maxlength'] ">* 200 characters Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">City / Area :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="permCity" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('permCity')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('permCity')?.errors?.['maxlength'] ">* 50 characters Only.</p>    
+                                </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">PIN :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="permPIN" aria-label="Small" maxlength="6"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('permPIN')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('permPIN')?.errors?.['pattern'] ">* Number Only.</p>    
+                                    <p *ngIf="candidatePersonalForm.get('permPIN')?.errors?.['maxlength'] ">* 6 digits Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">District :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="permDistrict" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('permDistrict')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('permDistrict')?.errors?.['maxlength'] ">* 50 characters Only.</p>    
+                                </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">State :</label>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="permAState" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('permAState')?.errors?.['required'] ">* Required</p>    
+                                    <p *ngIf="candidatePersonalForm.get('permAState')?.errors?.['maxlength'] ">* 50 characters Only.</p>    
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <label class="labels" style="margin:0 !important ;">Educational Details</label>
+            <h6 class="mt-2" style="font-weight: 600;color: #000000;">Post Graduation (Optional)</h6>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">University / College Name :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="collegeName">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Degree :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="degree" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">CGPA / Mark (%) :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" formControlName="percentage" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('percentage')?.errors?.['pattern'] ">* Number Only.</p>
+    
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Year Of Passing :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="yearOfPassing" maxlength="4">
+                                <div class="errorMessage">
+                                    <p *ngIf="candidatePersonalForm.get('yearOfPassing')?.errors?.['pattern'] ">* Number Only </p>
+                                    <p *ngIf="candidatePersonalForm.get('yearOfPassing')?.errors?.['maxlength'] || candidatePersonalForm.get('yearOfPassing')?.errors?.['minlength'] ">* This field allow only 4 digits !</p>
+                                </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <h6 style="font-weight: 600;color: #000000;">Graduation</h6>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">University / College Name :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="collegeNameGraduation">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('collegeNameGraduation')?.errors?.['required'] ">* Required
+                                </p>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Degree :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="degreeGraduation">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('degreeGraduation')?.errors?.['required'] ">* Required
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">CGPA / Mark (%) :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="percentageGraduation">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('percentageGraduation')?.errors?.['required'] ">*Required
+                                </p>
+                                <p *ngIf="candidatePersonalForm.get('percentageGraduation')?.errors?.['pattern'] ">* please enter numbers only</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Year Of Passing :</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Small" aria-describedby="inputGroup-sizing-sm" formControlName="yearOfPassingGraduation" maxlength="4">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('yearOfPassingGraduation')?.errors?.['required'] ">* Required</p>
+                                <p *ngIf="candidatePersonalForm.get('yearOfPassingGraduation')?.errors?.['pattern'] ">* Number Only </p>
+                                    <p *ngIf="candidatePersonalForm.get('yearOfPassingGraduation')?.errors?.['maxlength'] || candidatePersonalForm.get('yearOfPassingGraduation')?.errors?.['minlength'] ">* This field allow only 4 digits !</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <label style=" font-family: 'Montserrat';font-weight: 600;color: #000000;  padding-top: 5px;  ">12
+                        <sup>th</sup>
+                    </label>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">CGPA / Mark (%) :</label>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="percentage12">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('percentage12')?.errors?.['required'] ">* Required</p>
+                                <p *ngIf="candidatePersonalForm.get('percentage12')?.errors?.['pattern'] ">* please
+                                    enter numbers only
+                                </p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Year Of Passing :</label>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="yearOfPassing12" maxlength="4">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('yearOfPassing12')?.errors?.['required'] ">* Required</p>
+                                <p *ngIf="candidatePersonalForm.get('yearOfPassing12')?.errors?.['pattern'] ">* Number Only </p>
+                                    <p *ngIf="candidatePersonalForm.get('yearOfPassing12')?.errors?.['maxlength'] || candidatePersonalForm.get('yearOfPassing12')?.errors?.['minlength'] ">* This field allow only 4 digits !</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <label style=" font-family: 'Montserrat';font-weight: 600;color: #000000; ">10 <sup>th</sup>
+                    </label>
+                    <div class="row">
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">CGPA / Mark (%) :</label>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="percentage10">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('percentage10')?.errors?.['required'] ">* Required
+                                </p>
+                                <p *ngIf="candidatePersonalForm.get('percentage10')?.errors?.['pattern'] ">* please
+                                    enter numbers only
+                                </p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label class=" col-form-label col-form-label-sm">Year Of Passing :</label>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <input type="text" class="input-text" aria-label="Sizing example input" maxlength="4"
+                                aria-describedby="inputGroup-sizing-sm" formControlName="yearOfPassing10">
+                            <div class="errorMessage">
+                                <p *ngIf="candidatePersonalForm.get('yearOfPassing10')?.errors?.['required'] ">* Required
+                                </p>
+                                <p *ngIf="candidatePersonalForm.get('yearOfPassing10')?.errors?.['pattern'] ">* Number Only </p>
+                                    <p *ngIf="candidatePersonalForm.get('yearOfPassing10')?.errors?.['maxlength'] || candidatePersonalForm.get('yearOfPassing10')?.errors?.['minlength'] ">* This field allow only 4 digits !</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label class="labels">Attach Resume</label>
+
+            <div class="row mt-2">
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="drop_box" draggable="true" ngClass="{{dragAreaClass}}">
+                            <header>
+
+                                <i class="bi bi-file-arrow-down-fill" (click)="file.click()" aria-hidden="true"
+                                    style="font-size: 19px;"></i>
+                                <input #file style="display: none;"
+                                    accept="application/pdf,.doc, .docx, application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                    type="file" (change)="uploadFiles($event)" [multiple]="false"
+                                    formControlName="formFile">
+
+
+                            </header>
+                            <label class="file" style="font-size:12px ;margin:0 !important;"
+                                for="resumeFileUpload">{{candidatePersonalForm.controls['formFile'].value}}</label>
+                            <p style="margin:0 !important">
+                                <a href="javascript:void(0)" (click)="file.click()">
+                                    Upload your Resume
+                                </a>
+                            </p>
+                            <!-- <h4>{{this.dragAreaClass}}</h4> -->
+
+                        </div>
+                        <div class="errorMessage">
+                            <p *ngIf="candidatePersonalForm.get('formFile')?.errors?.['required'] ">* Required</p>
+                            <p *ngIf="candidatePersonalForm.get('formFile')?.errors?.['InvalidExtension'] ">* Invalid File. (Only pdf, docx, doc files are allowed.)</p>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">
+                    <div class="row mb-5">
+                        <div class="button">
+
+                            <button type="submit" [disabled]="candidatePersonalForm.invalid"
+                                class="btn btn-primary btn-sm" style="margin-top: 27%;background: #26A9BE;
+                            border-radius: 6.70635px;">Submit</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </form>
+
+        <div *ngIf="isalreadyregistered" id='card' class="animated fadeIn">
+            <div id='upper-side'>
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg version="1.1" id="checkmark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" xml:space="preserve">
+                  <path d="M131.583,92.152l-0.026-0.041c-0.713-1.118-2.197-1.447-3.316-0.734l-31.782,20.257l-4.74-12.65
+              c-0.483-1.29-1.882-1.958-3.124-1.493l-0.045,0.017c-1.242,0.465-1.857,1.888-1.374,3.178l5.763,15.382
+              c0.131,0.351,0.334,0.65,0.579,0.898c0.028,0.029,0.06,0.052,0.089,0.08c0.08,0.073,0.159,0.147,0.246,0.209
+              c0.071,0.051,0.147,0.091,0.222,0.133c0.058,0.033,0.115,0.069,0.175,0.097c0.081,0.037,0.165,0.063,0.249,0.091
+              c0.065,0.022,0.128,0.047,0.195,0.063c0.079,0.019,0.159,0.026,0.239,0.037c0.074,0.01,0.147,0.024,0.221,0.027
+              c0.097,0.004,0.194-0.006,0.292-0.014c0.055-0.005,0.109-0.003,0.163-0.012c0.323-0.048,0.641-0.16,0.933-0.346l34.305-21.865
+              C131.967,94.755,132.296,93.271,131.583,92.152z" />
+                  <circle fill="none" stroke="#ffffff" stroke-width="5" stroke-miterlimit="10" cx="109.486" cy="104.353" r="32.53" />
+                </svg>
+                <h3 id='status'>
+                Success
+              </h3>
+            </div>
+            <div id='lower-side'>
+              <p id='message'>
+                Congratulations, you have successfully registered your information.
+              </p>
+              <a [routerLink]="" id="contBtn">Thank You</a>
+            </div>
+          </div>
+    </div>
+</div>

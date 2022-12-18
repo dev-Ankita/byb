@@ -1,0 +1,196 @@
+@import '~ngx-toastr/toastr';
+
+body {
+  font-family: "Montserrat" !important;
+}
+
+.formdetail {
+  background: -webkit-linear-gradient(white);
+  padding: 3%;
+  height: 100vh;
+  width: 100%;
+}
+
+.formdetail-left {
+
+  color: black;
+}
+
+
+.form-row .form-group {
+  position: relative;
+  margin: 16px 0;
+  margin-top: 10px;
+
+}
+
+.form-row .input-text {
+
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 1% 0;
+  border-width: 0px 0 2px 0;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  font-weight: 500;
+  outline: none;
+}
+
+.circle {
+  height: 20%;
+  width: 10%;
+  background-color: #26A9BE;
+  border-radius: 50%;
+  position: fixed;
+  right: -5%;
+  top: -10%;
+
+}
+
+.circle1 {
+  height: 20%;
+  width: 10%;
+  background-color: #26A9BE;
+  border-radius: 50%;
+  position: fixed;
+  bottom: -10%;
+  left: -5%;
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+
+}
+
+.required {
+  display: flex;
+}
+
+.errorMessage {
+  min-height: 18px;
+  color: red;
+}
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 2px solid #26A9BE;
+}
+
+.errorMessage p {
+  font-size: 10px;
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+#skills {
+  padding: 0;
+  border: 0;
+}
+
+.multiselect-dropdown .dropdown-btn {
+  border: 1px solid #767676 !important;
+  border-width: 0px 0 2px 0 !important;
+  border-radius: 0 !important;
+  padding: 6px 12px 6px 0 !important;
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret {
+  padding: 0 4px !important;
+  text-align: end !important;
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect__caret:before {
+  border-width: 7.5px 4px 0 4px !important;
+  border-color: #000000 transparent !important;
+}
+
+.multiselect-dropdown .dropdown-btn .dropdown-multiselect--active .dropdown-multiselect__caret:before {
+  top: 35% !important;
+  float: left !important;
+}
+
+.multiselect-dropdown:focus-visible,
+.multiselect-dropdown .dropdown-btn:focus-visible {
+  outline: none;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item {
+  max-width: fit-content !important;
+}
+
+.row,
+.container-fluid,
+.col-xl-2,
+.col-lg-2,
+.col-md-2,
+.col {
+  margin: 0;
+  padding: 0;
+}
+
+.theme-green .bs-datepicker-head {
+  background-color: #69a6bc;
+}
+
+.theme-green .bs-datepicker-body table td span.selected,
+.theme-green .bs-datepicker-body table td.selected span,
+.theme-green .bs-datepicker-body table td span[class*=select-]:after,
+.theme-green .bs-datepicker-body table td[class*=select-] span:after {
+  background-color: #69a6bc;
+}
+
+.theme-green .bs-datepicker-body table td.week span {
+  color: #69a6bc;
+}
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 2px solid #26A9BE;;
+  border-top-left-radius: calc(0.3rem - 1px);
+  border-top-right-radius: calc(0.3rem - 1px);
+}
+.form-control {
+  display: block;
+  // width: 93%;
+  height: calc(1em + .75rem + 2px);
+  /* padding: 0px; */
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  // border: 1px solid #ced4da;
+  border:  0.3px solid #ced4da ;
+  // border: 1px solid #ced4da;
+  border-radius: 6px;
+  
+  // transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+}
+
+.searchTxtbx {
+  border-color: #26A9BE;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  height: auto !important;
+}
+.btn-calander {
+
+  padding: 0;
+  border: solid 3px #26A9BE;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  -webkit-box-shadow: 1px 0px 11px 1px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 1px 0px 11px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 0px 11px 1px rgba(0, 0, 0, 0.25);
+}

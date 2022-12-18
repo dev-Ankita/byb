@@ -1,0 +1,59 @@
+<div class="row mb-1">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-left">
+        <div class="calender">
+            <button id="btnRangeCalendar" type="button" class="btn btn-calander btn-lg align-middle"
+                placeholder="Daterangepicker" bsDaterangepicker [bsValue]="selectedDateRangeValue"
+                [bsConfig]="{ dateInputFormat: 'DD MMM YYYY',  returnFocusToInput: false, adaptivePosition: true  }"
+                (bsValueChange)="onValueChange($event)"><i class="bi bi-calendar-plus-fill"></i></button>
+                <label for="btnRangeCalendar" style="width:fit-content ;">{{startDate}} -
+                    {{endDate}}</label>
+ 
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pl-xl-5">
+        <div class="input-group mx-auto" style="margin: auto; margin-right: 0;">
+            <div class="input-group-prepend">
+                <span class="input-group-text"
+                    style="border-radius: 1rem 0 0 1rem; background-color: transparent; border: 1px solid #26A9BE;border-right: 0; "
+                    id="inputGroup-sizing-default"><i style="color:#26A9BE; " class="bi bi-search"></i></span>
+            </div>
+            <input type="text" (keyup)="searchTableDataList($event)" class="form-control searchTxtbx" style="border-color: #26A9BE; border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card border-0">
+            <div class="card-body p-0" style="max-height: calc(100vh - 360px);">
+                <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm"
+                    style="overflow: auto ;">
+                    <table class="table text-center">
+
+                        <thead>
+                            <th style="font-size:15pxx;font-weight: 600;line-height: 18.29px;">
+                                #
+                            </th>
+                            <th style="font-size:15px;font-weight: 500; line-height: 18.29px;">
+                                Log Description
+                            </th>
+                            <th style="font-size:15px;font-weight: 600;line-height: 18.29px;">
+                                Date & Time
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ErrorLogData of newlogdata">
+                                <td>{{ErrorLogData.logId}}</td>
+                                <td>{{ErrorLogData.logDescription}}</td>
+                                <td>{{ErrorLogData.createdOn}}</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>

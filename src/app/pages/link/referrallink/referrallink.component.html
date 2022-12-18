@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12 col-12"></div>
+    <div class="col-xl-6 col-lg-6 col-md-8 col-sm-12 col-12">
+        <div class="card mt-4 m-0">
+            <div class="card-body p-1">
+                <form [formGroup]="uploadExcelForm" (ngSubmit)="sendEmail()">
+                    <div class="row mb-2">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <label for="fileUpload" style="padding-left:0 ;">Share Link To</label>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                            <a href="#" href="../../../../assets/EmailList_Template.xlsx" class="stretched-link" style="float: right;">Download Template</a>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="input-group input-group-sm mb-3">
+                            <input type="file" formControlName="uploadFileControl" accept=".xlsx,.xls" (change)="uploadFile($event)" class="custom-file-input"
+                                aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">{{uploadExcelForm.controls['uploadFileControl'].value}}</label>
+                        </div>
+                    </div>
+        
+                    <div class="row">
+                        <button type="submit" [disabled]="uploadExcelForm.invalid" class="btn btn-sm btn-info">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-3 col-md-2 col-sm-12 col-12"></div>
+</div>
+<div class="row" *ngIf="emailStatus.length > 0">
+    <div class="table-card w-100">
+        <div class="mb-3 mx-auto py-4"
+            style="margin-top: -40px; background-color: #26A9BE; border-radius: 1rem; width:95%;">
+            <div class="row">
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 ">
+                    <h4 style="color: white ;">Email Sent Status</h4>
+                </div>
+                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+                    <div class="input-group mx-auto">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"
+                                style="border-radius: 1rem 0 0 1rem; background-color: transparent; border: 1px solid #ffffff;border-right: 0;"
+                                id="inputGroup-sizing-default"><i style="color:#ffffff ;"
+                                    class="bi bi-search"></i></span>
+                        </div>
+                        <input type="text" class="form-control searchTxtbx" (keyup)="searchTableList($event)"
+                            aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    </div>
+                    <i class="bi bi-file-earmark-arrow-down-fill" (click)="exportexcel()"></i>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="card-body" style="max-height: calc(100vh - 360px);">
+            <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm"
+                style="overflow: auto ;">
+                <table class="table " id="excel-table">
+                    <thead style="color: black;font-weight:600;">
+                        <tr style="-webkit-box-shadow: 1px 1px 2px 1px rgba(107,107,107,1);
+                    -moz-box-shadow: 1px 1px 2px 1px rgba(107,107,107,1);
+                    box-shadow: 1px 1px 2px 1px rgba(107,107,107,1);">
+                            <th style="font-size:13.8px;font-weight: 600;line-height: 21.76px;">
+                                Serial No <span style="white-space: nowrap;"><i class="bi bi-arrow-down-up"
+                                        data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></span>
+                            </th>
+                            <th style="font-size:13.8px;font-weight: 600;line-height: 21.76px;">Email Id
+                                <span style="white-space: nowrap;"><i class="bi bi-arrow-down-up" data-toggle="tooltip"
+                                        title="sort" style="cursor: pointer;"></i></span>
+                            </th>
+                            <th style="font-size:13.8px;font-weight: 600;line-height: 21.76px;"> Status
+                                <span style="white-space: nowrap;"><i class="bi bi-arrow-down-up" data-toggle="tooltip"
+                                        title="sort" style="cursor: pointer;"></i></span>
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of emailStatus">
+                            <td>{{item.SerialNo}}</td>
+                            <td>{{item.EmailId}}</td>
+                            <td>
+                                <i *ngIf="item.Status" class="bi bi-send-check-fill"
+                                    style="color: #26a9be; font-size: 1.2rem;"></i>
+                                <i *ngIf="!item.Status" class="bi bi-send-dash-fill"
+                                    style="color: #ff0062; font-size: 1.2rem;"></i>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12"></div>
+    </div>
+</div>

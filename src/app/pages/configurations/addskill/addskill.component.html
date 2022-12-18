@@ -1,0 +1,47 @@
+<div class="row mb-5">
+    <div class="col">
+        <div class="skill">
+            <button type="button" class="btn btn-secondary dropdown-toggle" style="background-color:#26A9BE"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="bi bi-plus"></i>Add Skill
+            </button>
+            <div class="dropdown-menu">
+                <form class="px-4 py-3" [formGroup]="SkillForm">
+                    <div class="form-group mb-3">
+                        <label for="exampleDropdownFormEmail1" style="color:black">Add Skills</label>
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <input type="skill" class="form-control" formControlName="skillName"
+                            id="exampleDropdownFormEmail1">
+                    </div>
+                    <div class="form-group text-center">
+
+                        <button type="submit"  class="btn btn-primary" style="background-color: #26A9BE;" (click)="addNewSkills()">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col pl-xl-5">
+        <div class="input-group mx-auto" style="margin: auto; margin-right: 0;">
+            <div class="input-group-prepend">
+                <span class="input-group-text"
+                    style="border-radius: 1rem 0 0 1rem; background-color: transparent; border: 1px solid #26A9BE;border-right: 0; "
+                    id="inputGroup-sizing-default"><i style="color:#26A9BE; " class="bi bi-search"></i></span>
+            </div>
+            <input type="text" (keyup)="searchSkillData($event)" class="form-control searchTxtbx" aria-label="Default"
+                aria-describedby="inputGroup-sizing-default">
+            
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6 px-1 py-1" *ngFor="let skill of skills">
+        <button type="button" class="btn btn-outline-info" style="width: -webkit-fill-available;white-space: nowrap;overflow: hidden; text-overflow: ellipsis;" disabled>{{skill.skillName}}</button>
+    </div>
+</div>

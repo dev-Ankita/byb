@@ -1,0 +1,223 @@
+.multiselect-dropdown .dropdown-btn,
+.custom-file-label {
+
+  display: flex;
+  width: 100%;
+  height: 34px;
+  border-width: 0px 0 2px 0;
+  border-color: white white black;
+  padding: 1% 0;
+  line-height: 39px;
+  font-weight: 200;
+  outline: none;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  color: #000000 !important;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  font-weight: 400;
+}
+
+
+
+.custom-file-label::after {
+  border-radius: 0 !important;
+}
+
+.card {
+  box-shadow: 0 10px 15px 0 rgb(0 0 0 / 30%);
+  width: 90%;
+  border-radius: 10px;
+  background-color: #ffffff;
+  z-index: 10;
+  height: fit-content;
+  margin: auto;
+}
+
+.searchbox-wrap {
+  button {
+    padding-left: 10px;
+    border: none;
+    cursor: pointer;
+    cursor: hand;
+
+  }
+}
+
+label {
+  font-size: 15px;
+  color: black;
+  font-weight: 500;
+  margin: 2% 0 0 0 !important;
+}
+
+.custom-file-label::after {
+  color: #ffffff;
+  background-color: #26a9be;
+}
+
+#preferredWorkType {
+  display: flex;
+  height: 34px;
+  padding: 10px 10px 10px 0;
+  border-width: 0px 0 2px 0;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 23px;
+  font-weight: 400;
+  outline: none;
+}
+
+.form-check-label {
+  color: #000000 !important;
+  font-weight: 500 !important;
+}
+
+.bottomcircle {
+  height: 7rem;
+  width: 7rem;
+  background-color: #26A9BE;
+  border-radius: 7rem;
+  position: fixed;
+  bottom: -7%;
+  left: -3%;
+  z-index: -999;
+}
+
+.labels {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.h6 {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.custom-file-input:lang(en)~.custom-file-label::after
+{
+    display: none;
+}
+
+
+
+
+.drop_box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 4px dotted #414141;
+  border-radius: 6px;
+  width: -webkit-fill-available;
+}
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+.selectpicker {
+  height: 3em;
+  width: 90%;
+  border-radius: 10px;
+}
+
+.drop_box p {
+  font-size: 12px;
+  color: #a3a3a3;
+}
+
+input.input-text {
+  width: -webkit-fill-available;
+  font-size: 0.75rem;
+}
+
+
+#card {
+  position: relative;
+  top: 30vh;
+  width: 320px;
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#upper-side {
+  padding: 2em;
+  background-color: #26A9BE;
+  display: block;
+  color: #fff;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+#checkmark {
+  font-weight: lighter;
+  fill: #fff;
+  margin: -3.5em auto auto 20px;
+}
+
+#status {
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1em;
+  margin-top: -.2em;
+  margin-bottom: 0;
+}
+
+#lower-side {
+  padding: 2em 2em 5em 2em;
+  background: #fff;
+  display: block;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#message {
+  margin-top: -.5em;
+  color: #757575;
+  letter-spacing: 1px;
+}
+
+#contBtn {
+  position: relative;
+  top: 1.5em;
+  text-decoration: none;
+  background: #26A9BE;
+  color: #fff;
+  margin: auto;
+  padding: .8em 3em;
+  -webkit-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+  -moz-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+  box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.21);
+  border-radius: 25px;
+  -webkit-transition: all .4s ease;
+        -moz-transition: all .4s ease;
+        -o-transition: all .4s ease;
+        transition: all .4s ease;
+}
+
+#contBtn:hover {
+  -webkit-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
+  -moz-box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
+  box-shadow: 0px 15px 30px rgba(50, 50, 50, 0.41);
+  -webkit-transition: all .4s ease;
+        -moz-transition: all .4s ease;
+        -o-transition: all .4s ease;
+        transition: all .4s ease;
+}

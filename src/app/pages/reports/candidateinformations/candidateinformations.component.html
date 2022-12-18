@@ -1,0 +1,251 @@
+<div class="row">
+    <div class="card w-100">
+        <div class="mx-auto py-2" style="margin-top: -40px; background-color: #26A9BE; border-radius: 1rem; width:95%;">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-2 m-0">
+                <h4 class="mx-auto ml-xl-0 ml-lg-0 ml-md-0 ml-sm-0"
+                    style="color: white ;width: fit-content;font-size: 1.4rem;">Candidate Informations</h4>
+            </div>
+
+            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pl-xl-5">
+                <div class="input-group mx-auto" style="margin: auto; margin-right: 0;">
+                    <!-- <div>
+                        <button type="button" class="btn btn-info" (click)="sendAcknowledgeToAll()">Send Acknowledge</button>
+                      </div> -->
+                    <div>
+                      <i class="bi bi-file-earmark-spreadsheet-fill" (click)="exportexcel()" style="font-size:x-large; color:white; margin-right: 8px;cursor: pointer;"> </i>
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"
+                            style="border-radius: 1rem 0 0 1rem; background-color: transparent; border: 1px solid #ffffff;border-right: 0;height: calc(1.5em + 0.35rem + 5px) !important;"
+                            id="inputGroup-sizing-default"><i style="color:#ffffff ;"
+                                class="bi bi-search"></i></span>
+                    </div>
+                   
+                    <input type="text"  (keyup)="searchCandidateInfoDataList($event)"
+                        class="form-control searchTxtbx" aria-label="Default" placeholder="Search Candidate"
+                        aria-describedby="inputGroup-sizing-default">
+                      
+                    <!-- filter--code -->
+                    <a [routerLink]="" (click)="sidebarShow = !sidebarShow" class="btn btn-link btn-filter"
+                        role="button" aria-pressed="true">
+                        <i class='bi bi-funnel'></i>
+                    </a>
+
+                     <form [formGroup]="candidateInfoFilterForm" (ngSubmit)="filterCandidateDetails(candidateInfoFilterForm.value)">
+                        <div class="sidebar-slider" [class.sidebar-slide-in]="sidebarShow" style="overflow:auto">
+                            <div class="sidebar-close">
+                                <i class="bi bi-x-square" (click)="sidebarShow = !sidebarShow"></i>
+                            </div>
+                            <div class="sidebar-content">
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">Candidate Name</label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="candidateName" style="border-collapse: separate; border-spacing: 15px 50px;">
+
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">Contact Number </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="contactNumber">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">EmailId</label>
+                                    <input type="text" class="form-control-input"   formControlName="emailId"> 
+
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">Current Location</label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="currentLocation">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">PG college</label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="pgCollegeName">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">PG Degree</label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="pgDegreeName">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">PG Mark </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="pgPercentage">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">PG Year Of Passing </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="pgYearOfPassing">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">GD college </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="gdCollegeName">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">GD Degree </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="gdDegreeName">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">GD Mark </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="gdPercentage">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">GD Year Of Passing </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="gdYearofpassing">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">12<sup>th</sup> Mark </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="idPercentage">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">12 <sup>th</sup> Year Of Passing </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="idYearOfPassing">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">10 <sup>th</sup> Mark </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="sscPercentage">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label class="filterFormLabel">10<sup>th</sup> Year Of Passing </label>
+                                    <input type="text" class="form-control-input" placeholder="" value=""
+                                        formControlName="sscYearOfPassing">
+                                </div>
+
+                                <div style="margin-top: 1%;height: 20%; width: 59%;
+                       justify-content: center;display: flex;">
+                                    <button type="submit" class="btn btn-info btn-sm" style="margin-right:5% ;  
+                              border-radius: 5px;" [disabled]="checkDisabled()">Apply</button>
+                                    <button type="submit" style="
+                          border-radius: 5px;" class="btn btn-info btn-sm"
+                                        (click)="resetForm()">Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form> 
+
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive-xl table-responsive-lg table-responsive-md table-responsive-sm" style="overflow:auto ;height:calc(100vh - 18rem - 72px);">
+                <table class="table table-sm table-bordered" id="candidateinformation">
+                    <thead>
+                        <tr>
+                            <th colspan="5">Candidate Information</th>                       
+                            <th colspan="4">Post Graduation</th>
+                            <th colspan="4">Graduation</th>
+                            <th colspan="2">12th</th>
+                            <th colspan="2">10th</th>
+                            <th colspan="1"></th>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <th>Candidate Name <i class="bi bi-arrow-down-up"  (click)="sortColumn('candidateName', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Contact Number <i class="bi bi-arrow-down-up" (click)="sortColumn('contactNumber', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>EmailId <i class="bi bi-arrow-down-up" (click)="sortColumn('emailId', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Current Location <i class="bi bi-arrow-down-up"(click)="sortColumn('currentLocation', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>                        
+                            <th>College Name <i class="bi bi-arrow-down-up" (click)="sortColumn('pG_CollegeName', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Degree <i class="bi bi-arrow-down-up" (click)="sortColumn('pG_DegreeName', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Mark (%) <i class="bi bi-arrow-down-up " (click)="sortColumn('pG_Percentage', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Year <i class="bi bi-arrow-down-up" (click)="sortColumn('pG_YearOfPassing', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>College Name <i class="bi bi-arrow-down-up" (click)="sortColumn('gD_CollegeName', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Degree <i class="bi bi-arrow-down-up" (click)="sortColumn('gD_DegreeName', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Mark (%) <i class="bi bi-arrow-down-up"(click)="sortColumn('gD_Percentage', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Year <i class="bi bi-arrow-down-up" (click)="sortColumn('gD_Yearofpassing', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Mark (%) <i class="bi bi-arrow-down-up" (click)="sortColumn('iD_Percentage', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Year <i class="bi bi-arrow-down-up" (click)="sortColumn('iD_YearOfPassing', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Mark (%) <i class="bi bi-arrow-down-up" (click)="sortColumn('ssC_Percentage', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th>Year <i class="bi bi-arrow-down-up" (click)="sortColumn('ssC_YearOfPassing', booleanValue)" data-toggle="tooltip" title="sort" style="cursor: pointer;"></i></th>
+                            <th scope="col">Resume </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let candidateInfo of candidateInformations">
+                            <td scope="row" style="padding:0 !important ;">
+                                <img onerror="this.src='../../../../assets/images/user_default_logo.svg'" src="{{candidateInfo.candidateProfileImage}}" class="img-fluid profile-image" alt="Responsive image">
+                            </td>
+                            <td scope="row">{{candidateInfo.candidateName}}</td>
+                            <td scope="row">{{candidateInfo.contactNumber}}</td>
+                            <td scope="row">{{candidateInfo.emailId}}</td>
+                            <td scope="row">{{candidateInfo.currentLocation}}</td>                            
+                            <td scope="row">{{candidateInfo.pG_CollegeName}}</td>
+                            <td scope="row">{{candidateInfo.pG_DegreeName}}</td>
+                            <td scope="row">{{candidateInfo.pG_Percentage}}</td>
+                            <td scope="row">{{candidateInfo.pG_YearOfPassing}}</td>
+                            <td scope="row">{{candidateInfo.gD_CollegeName}}</td>
+                            <td scope="row">{{candidateInfo.gD_DegreeName}}</td>
+                            <td scope="row">{{candidateInfo.gD_Percentage}}</td>
+                            <td scope="row">{{candidateInfo.gD_Yearofpassing}}</td>
+                            <td scope="row">{{candidateInfo.iD_Percentage}}</td>
+                            <td scope="row">{{candidateInfo.iD_YearOfPassing}}</td>
+                            <td scope="row">{{candidateInfo.ssC_Percentage}}</td>
+                            <td scope="row">{{candidateInfo.ssC_YearOfPassing}}</td>
+                            <td scope="row"><i class="bi bi-download" style="cursor: pointer;"(click)="getCandidateResumeFile(candidateInfo.resumeId)"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 m-0 p-0">
+                    <div class="mx-auto ml-xl-0 ml-lg-0 ml-md-0">
+                        <div class="form-group row">
+                            <label for="pageSize" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-5">Page Size</label>
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-7">
+                                <select [value]="rowCount" class="form-control" id="pageSize"
+                                (change)="changeRowCount($event)">
+                                <option>20</option>
+                                <option>50</option>
+                                <option>100</option>
+                                <option>500</option>
+                                <option>1000</option>
+                            </select>
+                            </div>
+                          </div>
+                    </div>                    
+                </div>
+                <div class="col-xxl-4 col-col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 m-0 p-0">
+                    <div style="width: fit-content;" class="mx-auto">
+                        <label>Showing {{currentPageNumber}} Page of {{totalPages}} Pages.</label>
+                    </div>
+                </div> 
+                <div class="col-xxl-4 col-col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 m-0 p-0">
+                    <div style="width:fit-content" class="mx-auto mr-xl-0 mr-lg-0 mr-md-0">
+                        <nav aria-label="Page navigation example" style="width:fit-content">
+                            <ul class="pagination">
+                                <li class="page-item" [ngClass]="{'disabled':currentPageNumber===1}">
+                                    <a class="page-link" [routerLink]="" (click)="changePageNumber(-1)"><span aria-hidden="true">&laquo;</span></a>
+                                </li>
+                                <li class="page-item" *ngIf="visiblePages[0] > 1">
+                                    <a class="page-link" [routerLink]="" (click)="changePageNumber('prevSet')">...</a>
+                                </li>
+                                <li *ngFor='let pageNumber of visiblePages; let i = index' class="page-item"
+                                    [ngClass]="{'active':(pageNumber)===currentPageNumber}">
+                                    <a class="page-link" [routerLink]="" (click)="changePageNumber(pageNumber)">{{pageNumber}}</a>
+                                </li>
+                                <li class="page-item" *ngIf="visiblePages[2] < (totalPages)">
+                                    <a class="page-link" [routerLink]="" (click)="changePageNumber('nextSet')">...</a>
+                                </li>
+                                <li class="page-item" [ngClass]="{'disabled':currentPageNumber===totalPages}">
+                                    <a class="page-link" [routerLink]="" (click)="changePageNumber(0)"><span aria-hidden="true">&raquo;</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

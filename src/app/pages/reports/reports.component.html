@@ -1,0 +1,59 @@
+<div class="row reports">
+    <div class="col-xxl-3 col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="row">
+            <div class="col-xxl-12 col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12 mb-sm-3 mb-3">
+                <div class="card chart-card">
+                    <div class="card-heading">
+                        <h4 style="color: black ;text-align: center; ">Applied For</h4>
+                    </div>
+                    <div class="card-body chart-card-body">
+                        <div id="columnChart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-12 col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12 mt-xl-3">
+                <div class="card chart-card">
+                    <div class="card-heading">
+                        <h4 style="color: black ; text-align:center;">Preferred Work Type</h4>
+                    </div>
+                    <div class="card-body chart-card-body">
+                        <div id="pieChart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-9 col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 mt-xl-3 mt-lg-4 mt-md-4 mt-sm-5 mt-5">
+        <div class="row mb-5">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 m-0 p-0">
+                <div class="row mt-4">
+                    <div class="col-xl-6 col-lg-6 col-md-4 col-sm-6 col-12" style="padding: 0;">
+                        <div class="kpi">
+                            <div class="badge badge-light badge-record">{{bybCandidateDetailsCount}}</div>  
+                            <a [routerLink]="['/dashboard/reports/bybdetails']" style="color:#ffffff">
+                                <h5>BYB Details</h5>
+                            </a>
+                        </div>  
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-4 col-sm-6 col-12 pl-0 pl-xl-2 pl-lg-2 pl-md-2 pl-sm-2 mt-4 mt-xl-0 mt-lg-0 mt-md-0 mt-sm-0" style="padding: 0;">
+                        <div class="kpi">
+                            <div class="badge badge-light badge-record">{{bybCandidateDetailsInfoCount}}</div>
+                            <a  [routerLink]="['/dashboard/reports/candidatedetails']" style="color:#ffffff">
+                                <h5>Candidate Informations</h5>
+                            </a>
+                        </div>  
+                    </div>
+                </div>              
+            </div>
+            <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right">
+                <label for="btnRangeCalendar" style="width:fit-content ;">{{startDate}} - {{endDate}}</label>
+                <button id="btnRangeCalendar" type="button" class="btn btn-calander btn-lg align-middle"
+                    placeholder="Daterangepicker" bsDaterangepicker [bsValue]="selectedDateRangeValue"
+                    [bsConfig]="{ dateInputFormat: 'DD MMM YYYY',  returnFocusToInput: false, adaptivePosition: true  }"
+                    (bsValueChange)="onValueChange($event)"><i class="bi bi-calendar-plus-fill"></i></button>
+            </div> -->
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

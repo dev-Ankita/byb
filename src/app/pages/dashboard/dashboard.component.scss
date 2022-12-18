@@ -1,0 +1,98 @@
+.nav-link {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #26A9BE !important;
+}
+
+.navbar-nav .active>.nav-link {
+  color: #000000 !important;
+}
+
+.nav-link {
+  padding-right: 2.5rem !important;
+}
+#navbarSupportedContent.show
+{
+  float: right !important;
+}
+
+.side-menu
+{
+  margin: 35% 0 35% 5% !important;
+  width:-webkit-fill-available !important;
+  
+  .nav-link {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    padding-left: 1.5rem;
+    padding-right: 0.5rem !important;  
+    color: #ffffff !important;
+  }
+  
+  .navbar-nav .active>.nav-link {
+    color: #ffffff !important;
+  }
+  .nav-item.active {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+  .nav-item
+  {
+    background: #228AA1;
+    margin-bottom: 10%;
+  }
+}
+
+.hideNotification
+{
+  display: none;
+}
+
+.showNotification
+{
+  display: block;  
+}
+
+
+
+.icon-button__badge {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  width: 20px;
+  height: 20px;
+  background: red;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  font-size: medium;
+}
+
+.card
+{    
+    z-index: 999999999999;
+    position: absolute;
+    right: 30%;
+    top: 80%;    
+}
+.card-body
+{
+  overflow: auto;
+  width: 20rem;
+  padding: 0;
+  max-height: 40vh;  
+}
+.card-title {
+  border-bottom: 1px solid #494e53;
+  padding: 1.25rem;
+}
+
